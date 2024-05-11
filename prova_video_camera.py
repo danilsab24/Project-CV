@@ -43,4 +43,39 @@ nome_file = 'video_acquisito.avi'
 durata_secondi = 10
 
 # Chiama la funzione per acquisire e salvare il video
-acquisisci_e_salva_video(nome_file, durata_secondi)
+#in questo caso il video non viene modificato e viene salvato
+#acquisisci_e_salva_video(nome_file, durata_secondi)
+
+#in questo caso il video viene modifica ma non salvato
+#preme 'q' per terminare il video
+# Funzione per convertire un frame in bianco e nero
+def converti_bn(frame):
+    return cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+# Funzione per acquisire video dalla fotocamera e visualizzarlo in tempo reale
+def acquisisci_e_visualizza():
+    # Impostazioni per acquisire video dalla fotocamera
+    video_capture = cv2.VideoCapture(0)  # Utilizza la fotocamera predefinita
+
+    while True:
+        # Acquisizione frame dalla fotocamera
+        ret, frame = video_capture.read()
+
+        # Converti il frame in bianco e nero
+        frame_bn = converti_bn(frame)
+
+        # Visualizza il frame in bianco e nero
+        cv2.imshow('Video in Bianco e Nero', frame_bn)
+
+        # Controlla se l'utente preme 'q' per interrompere
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    # Rilascia le risorse
+    video_capture.release()
+    cv2.destroyAllWindows()
+
+# Chiama la funzione per acquisire e visualizzare il video in tempo reale
+acquisisci_e_visualizza()
+
+
