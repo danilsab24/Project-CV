@@ -1,6 +1,6 @@
 import math
 import torch
-from utils.util import make_anchors
+from utils import make_anchors
 
 
 def pad(k, p=None, d=1):

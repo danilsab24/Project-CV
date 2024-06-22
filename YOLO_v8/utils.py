@@ -195,6 +195,3 @@ def strip_optimizer(filename):
 def clip_gradients(model, max_norm=10.0):
     clip_grad_norm_(model.parameters(), max_norm=max_norm)
 
-class EMA:
-    """
-    Updated Exponential Moving Average
