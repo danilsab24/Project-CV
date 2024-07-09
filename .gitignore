@@ -1,2 +1,4 @@
 /.venv/*
 /YOLO_v8/venv/*
+trained_model/hand_gesture_cnn_with_metrics_modello1.pth
+trained_model/hand_gesture_cnn_with_metrics.pth
