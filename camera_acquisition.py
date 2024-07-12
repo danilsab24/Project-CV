@@ -3,7 +3,7 @@ import os
 import time
 
 # Directory to save images
-save_dir = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/dataset/A"  # Change this to your desired save folder
+save_dir = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/dataset/Nothing"  # Change this to your desired save folder
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
