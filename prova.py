@@ -6,7 +6,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 from model_CNN import HandGestureCNN
 
-model_path = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/hand_gesture_cnn_with_metrics_modello1 (1).pth"
+model_path = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/hand_gesture_cnn_with_metrics (2).pth"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 checkpoint = torch.load(model_path, map_location=device)
 

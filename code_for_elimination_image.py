@@ -2,7 +2,7 @@ import os
 import random
 
 # Percorso della cartella contenente le immagini
-save_dir = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/dataset/Nothing"
+save_dir = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/daniele/dataset/nothing"
 
 def elimina_immagini_randomicamente(directory, target_count=300):
     # Lista di tutte le immagini nella cartella
