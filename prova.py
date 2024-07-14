@@ -6,7 +6,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 from model_CNN import HandGestureCNN
 
-model_path = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/hand_gesture_cnn_with_metrics (2).pth"
+model_path = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/hand_gesture_cnn_with_metrics (1).pth"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 checkpoint = torch.load(model_path, map_location=device)
 
@@ -17,10 +17,12 @@ model.eval()
 model.to(device)
 
 # Dimensioni delle immagini che il modello si aspetta
-img_height, img_width = 224, 224  # Modifica se necessario
+img_height, img_width = 480, 480  # Cambiato a 480x480
 
 # Mappa delle classi (assumendo che il tuo modello restituisca un indice che corrisponde a una lettera)
-class_labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M','N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','del', 'nothing', 'space']  # Lista di tutte le lettere che il modello può riconoscere
+class_labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                'del', 'nothing', 'space']  # Lista di tutte le lettere che il modello può riconoscere
 
 # Trasformazioni delle immagini
 transform = transforms.Compose([
