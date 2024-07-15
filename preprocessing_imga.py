@@ -76,6 +76,6 @@ def process_directory(input_dir, output_base_dir):
                     detect_hand_and_save(image_path, label, output_label_dir)
 
 if __name__ == "__main__":
-    input_dir = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/DATA/dataset"
-    output_base_dir = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/DATA/landmarks"
+    input_dir = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/camera_test/input"
+    output_base_dir = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/camera_test/output"
     process_directory(input_dir, output_base_dir)

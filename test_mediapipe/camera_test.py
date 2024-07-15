@@ -7,7 +7,7 @@ import torchvision.transforms as transforms
 from model_CNN import HandGestureCNN
 
 num_classes = 29
-model_path = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/LandMarks_hand_gesture_cnn_with_metrics.pth"
+model_path = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/only_landmark_hand_gesture_cnn_with_metrics.pth"
 model = HandGestureCNN(num_classes)
 
 # Carica il checkpoint ed estrai lo state_dict del modello
@@ -22,7 +22,7 @@ mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 
-hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
+hands = mp_hands.Hands(static_image_mode=False, min_detection_confidence=0.3)
 
 labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
           'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -31,9 +31,33 @@ labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 # Trasformazione dell'immagine per il modello
 transform = transforms.Compose([
     transforms.ToPILImage(),
-    transforms.Resize((640, 480)),  # Assicurati che l'immagine sia ridimensionata correttamente per il modello
+    transforms.Resize((480, 640)),  # Assicurati che l'immagine sia ridimensionata correttamente per il modello
     transforms.ToTensor()
 ])
+
+def remove_background_and_keep_landmarks(frame, results):
+    H, W, _ = frame.shape
+    landmarks_image = np.zeros_like(frame)
+
+    for hand_landmarks in results.multi_hand_landmarks:
+        mp_drawing.draw_landmarks(
+            landmarks_image, hand_landmarks, mp_hands.HAND_CONNECTIONS,
+            mp_drawing.DrawingSpec(color=(255, 255, 255), thickness=2, circle_radius=2),
+            mp_drawing.DrawingSpec(color=(255, 255, 255), thickness=2, circle_radius=2)
+        )
+
+    # Crea una maschera binaria basata sull'immagine dei landmarks
+    gray_landmarks_image = cv2.cvtColor(landmarks_image, cv2.COLOR_BGR2GRAY)
+    _, mask = cv2.threshold(gray_landmarks_image, 1, 255, cv2.THRESH_BINARY)
+
+    # Applica la maschera all'immagine originale
+    result = cv2.bitwise_and(frame, frame, mask=mask)
+
+    # Converte lo sfondo in bianco (opzionale)
+    white_background = np.ones_like(frame, dtype=np.uint8) * 255
+    result_with_white_bg = np.where(result == 0, white_background, result)
+    
+    return result_with_white_bg
 
 while True:
     ret, frame = cap.read()
@@ -45,12 +69,9 @@ while True:
     results = hands.process(frame_rgb)
 
     if results.multi_hand_landmarks:
-        for hand_landmarks in results.multi_hand_landmarks:
-            mp_drawing.draw_landmarks(
-                frame, hand_landmarks, mp_hands.HAND_CONNECTIONS,
-                mp_drawing_styles.get_default_hand_landmarks_style(),
-                mp_drawing_styles.get_default_hand_connections_style())
+        processed_frame = remove_background_and_keep_landmarks(frame, results)
 
+        for hand_landmarks in results.multi_hand_landmarks:
             # Ottieni le coordinate della bounding box
             x_ = [landmark.x for landmark in hand_landmarks.landmark]
             y_ = [landmark.y for landmark in hand_landmarks.landmark]
@@ -66,7 +87,7 @@ while True:
             x2 = min(W, x2)
             y2 = min(H, y2)
 
-            hand_img = frame_rgb[y1:y2, x1:x2]
+            hand_img = processed_frame[y1:y2, x1:x2]
 
             if hand_img.size == 0:  # Controlla se l'immagine della mano è vuota
                 continue
@@ -85,8 +106,16 @@ while True:
             cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 0), 4)
             cv2.putText(frame, predicted_character, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 0, 0), 3, cv2.LINE_AA)
 
-    # Mostra il frame con le predizioni
-    cv2.imshow('frame', frame)
+            # Disegna l'etichetta predetta sull'immagine dei landmarks
+            cv2.putText(processed_frame, predicted_character, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 0, 0), 3, cv2.LINE_AA)
+
+    # Mostra il frame originale con le predizioni
+    cv2.imshow('Original Frame', frame)
+
+    # Mostra il frame con i soli landmarks e le linee che li collegano
+    if results.multi_hand_landmarks:
+        cv2.imshow('Landmarks Frame', processed_frame)
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
