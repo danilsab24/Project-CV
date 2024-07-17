@@ -4,11 +4,11 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
-from model_CNN import HandGestureCNN
-from VGG16_hande_gesture_detection import HandGestureVGG16
+from hand_gesture_CNN_model import HandGestureCNN
+from VGG16_hande_gesture_detection_model import HandGestureVGG16
 
 num_classes = 29
-model_path = "C:\\Users\\danie\\OneDrive - uniroma1.it\\Desktop\\VGG16_only_landmark_hand_gesture_cnn_with_metrics.pth"
+model_path = "C:\\Users\\danie\\OneDrive - uniroma1.it\\Desktop\\2_VGG16_only_landmark_hand_gesture_cnn_with_metrics.pth"
 model = HandGestureVGG16(num_classes)
 
 # Carica il checkpoint ed estrai lo state_dict del modello
@@ -23,7 +23,7 @@ mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 
-hands = mp_hands.Hands(static_image_mode=False, min_detection_confidence=0.3)
+hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5)
 
 labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
           'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -33,7 +33,8 @@ labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 transform = transforms.Compose([
     transforms.ToPILImage(),
     transforms.Resize((480, 640)),  # Assicurati che l'immagine sia ridimensionata correttamente per il modello
-    transforms.ToTensor()
+    transforms.ToTensor(),
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
 ])
 
 def remove_background_and_keep_landmarks(frame, results):
@@ -64,6 +65,9 @@ while True:
     ret, frame = cap.read()
     if not ret:
         break
+    
+    # Ridimensiona il frame a 640x480
+    frame = cv2.resize(frame, (640, 480))
 
     H, W, _ = frame.shape
     frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

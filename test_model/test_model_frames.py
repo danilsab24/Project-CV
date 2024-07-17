@@ -72,6 +72,7 @@ def remove_background_and_keep_landmarks(image_path):
 transform = transforms.Compose([
     transforms.Resize((480, 640)),
     transforms.ToTensor(),
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
 ])
 
 # Caricamento delle immagini da una cartella
@@ -110,7 +111,7 @@ def predict_and_plot(model, images, labels):
     plt.show()
 
 # Definisci i percorsi e le etichette
-model_path = "C:\\Users\\danie\\OneDrive - uniroma1.it\\Desktop\\VGG16_only_landmark_hand_gesture_cnn_with_metrics.pth"
+model_path = "C:\\Users\\danie\\OneDrive - uniroma1.it\\Desktop\\2_VGG16_only_landmark_hand_gesture_cnn_with_metrics.pth"
 input_folder = "C:\\Users\\danie\\OneDrive - uniroma1.it\\Desktop\\camera_test\\input"
 labels = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
