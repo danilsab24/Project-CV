@@ -15,8 +15,15 @@ This repo, as already mentioned provide the code for create dataset with persona
   <img src="images/frame_0297.png" alt="Hand Gesture Example 2" width="300"/>
 </div>
 
-After that we can use two typer of preprocessing for images if we use the code in [```detect_only_landmarks.py```](make_dataset/detect_only_landmarks.py), in this case the output images will have only landmarks and bounding box (is important change ```input_dir``` and ```output_base_dir```) the result will be:
+After that we can use two typer of preprocessing for images if we use the code in [```detect_only_landmarks.py```](make_dataset/detect_only_landmarks.py), in this case the output images will have only landmarks and bounding box (is important change path in ```input_dir``` and ```output_base_dir```) the result will be:
 <div style="display: flex; justify-content: space-between;">
   <img src="images/A_2_label.jpg" alt="Hand Gesture Example 1" width="300"/>
   <img src="images/frame_0034_label.jpg" alt="Hand Gesture Example 2" width="300"/>
 </div>
+
+If we use the in [```landmarks_and_remove_background.py```](make_dataset/landmarks_and_remove_background.py) (change path ```main_folder``` and ```output_folder```), in this case the result will be: 
+<div style="display: flex; justify-content: space-between;">
+  <img src="images/A_1.png" alt="Hand Gesture Example 1" width="300"/>
+  <img src="images/frame_0273.png" alt="Hand Gesture Example 2" width="300"/>
+</div>
+
