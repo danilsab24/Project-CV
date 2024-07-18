@@ -8,13 +8,13 @@ import mediapipe as mp
 import numpy as np
 from utils import get_hand_points
 
-# Inizializza Mediapipe Hands
+# Initialize Mediapipe Hands
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
 def create_augmentations(points_raw, angles, scales, rot_axes, scale_axes, augmentations, dest_path, label, name):
     count = 0
-    # Applicazione delle trasformazioni
+    # Transformations
     if 'rot' in augmentations:
         for _ in range(9):
             axis = random.choice(rot_axes)
@@ -49,59 +49,51 @@ def create_augmentations(points_raw, angles, scales, rot_axes, scale_axes, augme
     return count
 
 def create(name, root, label, dest_path, augmentations):
-    # Crea directory se non esistono
+    
     os.makedirs(dest_path, exist_ok=True)
     os.makedirs(os.path.join(dest_path, label), exist_ok=True)
 
-    # Legge e prepara l'immagine
     img_path = os.path.join(root, name)
     img = cv2.imread(img_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img.flags.writeable = False
     
-    # Estrae punti della mano
+    # Extract Landmarks
     points_raw = get_hand_points(img)
     if points_raw is not None:
-        # Normalizza i punti della mano
+        # Normalize 
         min_x, max_x = np.min(points_raw[:, 0]), np.max(points_raw[:, 0])
         min_y, max_y = np.min(points_raw[:, 1]), np.max(points_raw[:, 1])
         points_raw[:, 0] = (points_raw[:, 0] - min_x) / (max_x - min_x)
         points_raw[:, 1] = (points_raw[:, 1] - min_y) / (max_y - min_y)
 
-        # Salva i punti originali
         save_path = os.path.join(dest_path, label, f"{name.split('.')[0]}.npy")
         np.save(save_path, points_raw)
         count = 1
 
-        # Prepara parametri per le trasformazioni
+        # Parameters for transformations
         angles = list(range(-15, 15))
         scales = list(np.arange(1.0, 0.7, -0.05))
         rot_axes = ['y', 'z']
         scale_axes = ['y', 'x']
 
-        # Crea le augmentations
         count += create_augmentations(points_raw, angles, scales, rot_axes, scale_axes, augmentations, dest_path, label, name)
 
         return count
     return 0
 
 def main():
-    # Percorso della cartella principale
     main_folder = r"C:\\Users\\danie\\OneDrive - uniroma1.it\\Desktop\\DATA\\dataset"
     
-    # Impostazioni
     destination_path = os.path.join(main_folder, 'npy_dataset')
-    augmentations = ['rot', 'scale', 'noise']  # Specifica qui le augmentazioni desiderate
-    to_discard = []  # Aggiungi qui le etichette da scartare, se necessario
+    augmentations = ['rot', 'scale', 'noise'] 
+    to_discard = []  # if we want discard some labels
 
-    # Ottieni tutti i file immagine
     image_files = glob.glob(os.path.join(main_folder, '**/*.jp*'), recursive=True) + glob.glob(os.path.join(main_folder, '**/*.png'), recursive=True)
 
-    # Barra di progresso
     progress_bar = tqdm(total=len(image_files), desc="Creating dataset")
 
     count = 0
-    # Scorri tutti i file immagine
     for root, _, files in os.walk(main_folder):
         for name in files:
             label = os.path.basename(root)

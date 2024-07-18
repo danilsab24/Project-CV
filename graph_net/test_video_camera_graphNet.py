@@ -40,7 +40,7 @@ class PointNet(nn.Module):
         return x
 
 # Load the pre-trained model
-num_classes = 29  # Total number of labels
+num_classes = 29  
 model_path = "C:\\Users\\danie\\OneDrive - uniroma1.it\\Desktop\\point_net_model.pth"
 model = PointNet(num_classes)
 model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
@@ -50,12 +50,10 @@ model.eval()
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5)
 
-# Define the labels
 labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
           'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
           'del', 'nothing', 'space']
 
-# Initialize webcam
 cap = cv2.VideoCapture(0)
 
 def standardize_landmarks(landmarks):

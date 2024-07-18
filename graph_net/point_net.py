@@ -5,7 +5,6 @@ import torch.nn as nn
 class PointNet(nn.Module):
     def __init__(self, num_classes):
         super(PointNet, self).__init__()
-        #self.dropout = nn.Dropout(0.2)
         # Shared MLP (multi-layer perceptron)
         self.mlp = nn.Sequential(
             nn.Conv1d(3, 64, 1),

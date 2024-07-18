@@ -4,7 +4,7 @@ import numpy as np
 import os
 import shutil
 
-# Inizializza Mediapipe Hands
+# Initialize Mediapipe Hands
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
@@ -15,7 +15,7 @@ char2int = {
     "nothing": 26, "del": 27, "space": 28
 }
 
-# Funzione per ottenere i punti della mano
+# Extract Landmarks
 def get_hand_points(img):
     results = hands.process(img)
     points = []
@@ -60,11 +60,10 @@ def get_hand_points(img):
 
     return points
 
-# Funzione per cancellare una cartella
+
 def clean_folder(folder):
     shutil.rmtree(folder)
 
-# Funzione per controllare il dataset
 def check_dataset(root):
     width = 640
     height = 480
@@ -80,7 +79,6 @@ def check_dataset(root):
             cv2.imshow('', img)
             cv2.waitKey(0)
 
-# Funzione principale
 def main():
     main_folder = r"C:\\Users\\danie\\OneDrive - uniroma1.it\\Desktop\\DATA\\dataset"
     subfolders = [
@@ -89,13 +87,11 @@ def main():
         'del', 'nothing', 'space'
     ]
 
-    # Esegui operazioni su ciascuna sottocartella
     for subfolder in subfolders:
         folder_path = os.path.join(main_folder, subfolder)
         if not os.path.exists(folder_path):
             continue
 
-        # Esempio: Stampa i punti della mano per ogni immagine nella sottocartella
         for filename in os.listdir(folder_path):
             if filename.endswith('.jpg') or filename.endswith('.png'):
                 img_path = os.path.join(folder_path, filename)
