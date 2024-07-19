@@ -4,7 +4,6 @@ import cv2
 import mediapipe as mp
 from tqdm import tqdm
 
-# Disabilitare XNNPACK in TensorFlow Lite
 os.environ['TF_DISABLE_MLIR'] = '1'
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 os.environ['TF_XNNPACK_DELEGATE_NO'] = '1'
@@ -15,14 +14,12 @@ def detect_hand_and_save(image_path, label, output_dir):
     hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confidence=0.5)
     mp_drawing = mp.solutions.drawing_utils
 
-    # Read the image
     image = cv2.imread(image_path)
     if image is None:
         print(f"Error: Unable to read image {image_path}")
         hands.close()
         return
 
-    # Convert the image to RGB
     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     # Process the image and find hands
@@ -44,7 +41,6 @@ def detect_hand_and_save(image_path, label, output_dir):
             cv2.rectangle(image, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
             cv2.putText(image, label, (x_min, y_min - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
 
-            # Optionally, draw landmarks
             mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
     # Save the result image

@@ -6,7 +6,7 @@ def copy_files(src, dst, files):
     for file in files:
         src_path = os.path.join(src, file)
         dst_path = os.path.join(dst, file)
-        if os.path.isfile(src_path):  # Ensure it is a file
+        if os.path.isfile(src_path):  
             if not os.path.exists(os.path.dirname(dst_path)):
                 os.makedirs(os.path.dirname(dst_path))
             try:
@@ -22,7 +22,7 @@ def move_files(src, dst, files):
     for file in files:
         src_path = os.path.join(src, file)
         dst_path = os.path.join(dst, file)
-        if os.path.isfile(src_path):  # Ensure it is a file
+        if os.path.isfile(src_path):  
             if not os.path.exists(os.path.dirname(dst_path)):
                 os.makedirs(os.path.dirname(dst_path))
             try:
@@ -59,7 +59,7 @@ def main():
     train_dest = os.path.join(copy_dest, "asl_alphabet_train")
     test_dest = os.path.join(copy_dest, "asl_alphabet_test")
 
-    # Ensure the destination directories exist
+    # Check the destination directories exist
     if not os.path.exists(copy_dest):
         os.makedirs(copy_dest)
     if not os.path.exists(train_dest):
@@ -67,16 +67,13 @@ def main():
     if not os.path.exists(test_dest):
         os.makedirs(test_dest)
 
-    # Copy 100% of the test dataset
     print("Copying test dataset...")
     test_files = get_all_files(test_path)
     copy_files(test_path, test_dest, test_files)
 
-    # Organize test images into their respective folders
     print("Organizing test images...")
     organize_test_images(test_dest)
 
-    # Copy 40% of the training dataset
     print("Copying 40% of training dataset...")
     for subdir in os.listdir(train_path):
         subdir_path = os.path.join(train_path, subdir)
@@ -85,7 +82,6 @@ def main():
             train_subset, _ = train_test_split(train_files, test_size=0.6, random_state=42)
             copy_files(subdir_path, os.path.join(train_dest, subdir), train_subset)
 
-    # Move 10% of the training dataset to the test dataset folders
     print("Moving 10% of training dataset to test dataset folders...")
     for subdir in os.listdir(train_path):
         subdir_path = os.path.join(train_path, subdir)
@@ -98,7 +94,6 @@ def main():
                     os.makedirs(label_dir)
                 shutil.move(os.path.join(subdir_path, file), os.path.join(label_dir, file))
 
-    # Create validation dataset from 10% of the remaining training dataset
     print("Creating validation dataset...")
     validation_dest = os.path.join(copy_dest, "asl_alphabet_validation")
     if not os.path.exists(validation_dest):

@@ -7,7 +7,6 @@ save_dir = "C:/Users/danie/OneDrive - uniroma1.it/Desktop/camera_test/output"  #
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
-# Open the video capture
 cap = cv2.VideoCapture(0)
 
 saving = False
@@ -46,6 +45,5 @@ while True:
     if key == ord('q'):
         break
 
-# Release the resources
 cap.release()
 cv2.destroyAllWindows()
