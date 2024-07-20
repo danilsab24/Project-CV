@@ -45,7 +45,9 @@ To solve this task, we tried two approaches. The first approach involved trainin
 
 2. **Second Method**
    In this case, the network was trained with our dataset created with the file [```dataset_numpy_graph_net.py```](graph_net/dataset_numpy_graph_net.py). The difference from the first method is that the network was trained using the positions of the fingers of the hands. The trained model can be tested using the file [```test_video_camera_graphNet.py```](graph_net/test_video_camera_graphNet.py).
-
+   | Model         | epochs | accuracy |
+   |---------------|--------|----------|
+   | GraphNet      |    5   |  0.965   |
 
 
 
