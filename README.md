@@ -52,6 +52,8 @@ To solve this task, we tried two approaches. The first approach involved trainin
 ## Results
 As shown in the previous tables, VGG16, CNN, and GraphNet achieved the best results during training. However, in real-time conditions, the best model overall is GraphNet. It does not encounter problems such as cluttered background and lighting, and it uses the relative positions of the hands (landmarks) to determine the letters of the American Sign Language alphabet. A video of the result is shown below:
 
+https://github.com/user-attachments/assets/8fc444ec-ede6-4f58-92d1-42f0c2af317c
+
 **Links to download the trained models:**
 - [CNN](https://drive.google.com/file/d/1gXUVVwFewbC875Cbb3Y3rfNj-7hyMKGB/view?usp=sharing)           
 - [AlexNet](https://drive.google.com/file/d/1eC-mchw7NK8jKJcivvcI-ahR83LJIWXR/view?usp=drive_link)       
@@ -74,5 +76,8 @@ Within the repository, in the [/application](/application) folder, there are two
 
 **Examples of application functionality:**
 
+https://github.com/user-attachments/assets/015f33e1-adff-4019-8941-122af157b796
+
+https://github.com/user-attachments/assets/fda6115e-36a5-4186-931a-bfed54e137ba
 
 
