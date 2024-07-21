@@ -26,7 +26,7 @@ If we use the in [```landmarks_and_remove_background.py```](make_dataset/landmar
   <img src="images/frame_0273.png" alt="Hand Gesture Example 2" width="300"/>
 </div>
 
-If we use the in [```point_net/dataset_numpy_point_net.py```](graph_net/dataset_numpy_point_net.py) (change path ```main_folder```), in this case the result will be an a main folder ```named npy_dataset``` and 29 subfolder named from A to Z plus SPACE and inside each subfolders there are numpy files with position
+If we use the in [```point_net/dataset_numpy_point_net.py```](point_net/dataset_numpy_point_net.py) (change path ```main_folder```), in this case the result will be an a main folder ```named npy_dataset``` and 29 subfolder named from A to Z plus SPACE and inside each subfolders there are numpy files with position
 
 ## Model
 To solve this task, we tried two approaches. The first approach involved training models to recognize finger positions through images, and the second method involved training a network to recognize letters through the x, y, z coordinates of hand landmarks.
@@ -44,7 +44,7 @@ To solve this task, we tried two approaches. The first approach involved trainin
    After training, the models were tested using the files [```test_model_frames.py```](test_model/test_model_frames.py) and [```video_VGG16.py```](make_dataset/test_model/camera_test_video_VGG16.py). The first file tests the model with images that are not present in the dataset for training, testing, or validation, while the second file performs a real-time test with the computer's video camera.
 
 2. **Second Method**
-   In this case, the network was trained with our dataset created with the file [```dataset_numpy_point_net.py```](graph_net/dataset_numpy_point_net.py). The difference from the first method is that the network was trained using the positions of the fingers of the hands. The trained model can be tested using the file [```test_video_camera_PointNet.py```](graph_net/test_video_camera_PointNet.py).
+   In this case, the network was trained with our dataset created with the file [```dataset_numpy_point_net.py```](point_net/dataset_numpy_point_net.py). The difference from the first method is that the network was trained using the positions of the fingers of the hands. The trained model can be tested using the file [```test_video_camera_PointNet.py```](point_net/test_video_camera_PointNet.py).
    | Model         | epochs | accuracy |
    |---------------|--------|----------|
    | PointNet      |    5   |  0.965   |
