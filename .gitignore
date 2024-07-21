@@ -6,3 +6,4 @@ VGG16_hande_gesture_detection_model.py
 hand_gesture_CNN_model.py
 *.code-workspace
 __pycache__
+pointnet.py
