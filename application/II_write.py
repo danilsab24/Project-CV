@@ -4,7 +4,7 @@ import torch.nn as nn
 import numpy as np
 import mediapipe as mp
 import time
-from graphnet import PointNet
+from pointnet import PointNet
 
 # Load the pre-trained model
 num_classes = 29

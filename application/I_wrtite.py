@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import mediapipe as mp
-from graphnet import PointNet
+from pointnet import PointNet
 
 # Load the pre-trained model
 num_classes = 29  # Total number of labels
