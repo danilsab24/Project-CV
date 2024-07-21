@@ -62,17 +62,17 @@ https://github.com/user-attachments/assets/8fc444ec-ede6-4f58-92d1-42f0c2af317c
 - [GraphNet](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link)
 
 ## Applications
-Within the repository, in the [/application](/application) folder, there are two applications that use the newly trained models (as GraphNet is the best, the code files are adapted to this model). The purpose of these two applications is to help people learn the American Sign Language alphabet.
+Within the repository, in the [```/application```](/application) folder, there are two applications that use the newly trained models (as GraphNet is the best, the code files are adapted to this model). The purpose of these two applications is to help people learn the American Sign Language alphabet.
 
 **How to run the code:**
 1. Download the trained GraphNet model from this [link](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link).
-2. Download the files from the repository: [graphnet.py](application/graphnet.py) and [I_write.py](application/I_write.py) or [II_write.py](application/II_write.py).
-3. Change the path ```model_path``` in the file [I_write.py](application/I_write.py) or [II_write.py](application/II_write.py).
+2. Download the files from the repository: [```graphnet.py```](application/graphnet.py) and [```I_write.py```](application/I_write.py) or [```II_write.py```](application/II_write.py).
+3. Change the path ```model_path``` in the file [```I_write.py```](application/I_write.py) or [```II_write.py```](application/II_write.py).
    - *Tip: It is recommended to place all the files along with the trained model in a single folder.*
 
 **How the applications function:**
-1. [I_write.py](application/I_write.py): When executed, after some warnings, a window will open with the video camera on the left and a white box on the right. When the right hand appears in the video camera, the landmarks and the predicted letter will also appear. In this first application, to confirm the letter, press the 'k' key on the keyboard, press the 'space' key to add a space, and press the 'delete' key to remove a character. To close the application, press the 'c' key. If the sentence exceeds the white box, it will not be possible to write until some letters are deleted.
-2. [II_write.py](application/II_write.py): When executed, after some warnings, a window will open with the video camera on the left and a white box on the right. When the right hand appears in the video camera, the landmarks and the predicted letter will also appear. In this second application, the letter is confirmed by holding the hand in position for 3 seconds until the predicted letter box turns green. In this case, the only keys that can be used are 'd' to delete a letter and 'c' to close the application.
+1. [```I_write.py```](application/I_write.py): When executed, after some warnings, a window will open with the video camera on the left and a white box on the right. When the right hand appears in the video camera, the landmarks and the predicted letter will also appear. In this first application, to confirm the letter, press the 'k' key on the keyboard, press the 'space' key to add a space, and press the 'delete' key to remove a character. To close the application, press the 'c' key. If the sentence exceeds the white box, it will not be possible to write until some letters are deleted.
+2. [```II_write.py```](application/II_write.py): When executed, after some warnings, a window will open with the video camera on the left and a white box on the right. When the right hand appears in the video camera, the landmarks and the predicted letter will also appear. In this second application, the letter is confirmed by holding the hand in position for 3 seconds until the predicted letter box turns green. In this case, the only keys that can be used are 'd' to delete a letter and 'c' to close the application.
 
 **Examples of application functionality:**
 
