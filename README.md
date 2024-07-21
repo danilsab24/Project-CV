@@ -65,7 +65,7 @@ https://github.com/user-attachments/assets/1621ec33-5f32-4646-a426-83537e3cc6ce
 Within the repository, in the [```/application```](/application) folder, there are two applications that use the newly trained models (as PointNet is the best, the code files are adapted to this model). The purpose of these two applications is to help people learn the American Sign Language alphabet.
 
 **How to run the code:**
-1. Download the trained GraphNet model from this [link](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link).
+1. Download the trained PointNet model from this [link](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link).
 2. Download the files from the repository: [```pointnet.py```](application/graphnet.py) and [```I_write.py```](application/I_write.py) or [```II_write.py```](application/II_write.py).
 3. Change the path ```model_path``` in the file [```I_write.py```](application/I_write.py) or [```II_write.py```](application/II_write.py).
    - *Tip: It is recommended to place all the files along with the trained model in a single folder.*
