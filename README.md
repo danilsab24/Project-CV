@@ -47,7 +47,7 @@ To solve this task, we tried two approaches. The first approach involved trainin
    In this case, the network was trained with our dataset created with the file [```dataset_numpy_graph_net.py```](graph_net/dataset_numpy_graph_net.py). The difference from the first method is that the network was trained using the positions of the fingers of the hands. The trained model can be tested using the file [```test_video_camera_graphNet.py```](graph_net/test_video_camera_graphNet.py).
    | Model         | epochs | accuracy |
    |---------------|--------|----------|
-   | GraphNet      |    5   |  0.965   |
+   | PointNet      |    5   |  0.965   |
 
 ## Results
 As shown in the previous tables, VGG16, CNN, and GraphNet achieved the best results during training. However, in real-time conditions, the best model overall is GraphNet. It does not encounter problems such as cluttered background and lighting, and it uses the relative positions of the hands (landmarks) to determine the letters of the American Sign Language alphabet. A video of the result is shown below:
@@ -59,7 +59,7 @@ https://github.com/user-attachments/assets/1621ec33-5f32-4646-a426-83537e3cc6ce
 - [AlexNet](https://drive.google.com/file/d/1eC-mchw7NK8jKJcivvcI-ahR83LJIWXR/view?usp=drive_link)       
 - [SwimTransform](https://drive.google.com/file/d/1GJMtqwMVJ5Pq8vZcqBzvon7QSZ_rdFHb/view?usp=drive_link) 
 - [VGG16](https://drive.google.com/file/d/1fyRrwf8oL3HBdUW2cFNIGONHkFaiuBWv/view?usp=drive_link)
-- [GraphNet](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link)
+- [PointhNet](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link)
 
 ## Applications
 Within the repository, in the [```/application```](/application) folder, there are two applications that use the newly trained models (as GraphNet is the best, the code files are adapted to this model). The purpose of these two applications is to help people learn the American Sign Language alphabet.
