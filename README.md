@@ -26,7 +26,7 @@ If we use the in [```landmarks_and_remove_background.py```](make_dataset/landmar
   <img src="images/frame_0273.png" alt="Hand Gesture Example 2" width="300"/>
 </div>
 
-If we use the in [```graph_net/dataset_numpy_graph_net.py```](graph_net/dataset_numpy_graph_net.py) (change path ```main_folder```), in this case the result will be an a main folder ```named npy_dataset``` and 29 subfolder named from A to Z plus SPACE and inside each subfolders there are numpy files with position
+If we use the in [```point_net/dataset_numpy_graph_net.py```](graph_net/dataset_numpy_graph_net.py) (change path ```main_folder```), in this case the result will be an a main folder ```named npy_dataset``` and 29 subfolder named from A to Z plus SPACE and inside each subfolders there are numpy files with position
 
 ## Model
 To solve this task, we tried two approaches. The first approach involved training models to recognize finger positions through images, and the second method involved training a network to recognize letters through the x, y, z coordinates of hand landmarks.
@@ -66,7 +66,7 @@ Within the repository, in the [```/application```](/application) folder, there a
 
 **How to run the code:**
 1. Download the trained GraphNet model from this [link](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link).
-2. Download the files from the repository: [```graphnet.py```](application/graphnet.py) and [```I_write.py```](application/I_write.py) or [```II_write.py```](application/II_write.py).
+2. Download the files from the repository: [```pointnet.py```](application/graphnet.py) and [```I_write.py```](application/I_write.py) or [```II_write.py```](application/II_write.py).
 3. Change the path ```model_path``` in the file [```I_write.py```](application/I_write.py) or [```II_write.py```](application/II_write.py).
    - *Tip: It is recommended to place all the files along with the trained model in a single folder.*
 
