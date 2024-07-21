@@ -76,7 +76,7 @@ Within the repository, in the [```/application```](/application) folder, there a
 
 **Examples of application functionality:**
 
-https://github.com/user-attachments/assets/015f33e1-adff-4019-8941-122af157b796
+https://github.com/user-attachments/assets/afb591bf-08d8-4678-8cb0-eae5ebcb7466
 
 https://github.com/user-attachments/assets/fda6115e-36a5-4186-931a-bfed54e137ba
 
