@@ -50,7 +50,7 @@ To solve this task, we tried two approaches. The first approach involved trainin
    | PointNet      |    5   |  0.965   |
 
 ## Results
-As shown in the previous tables, VGG16, CNN, and GraphNet achieved the best results during training. However, in real-time conditions, the best model overall is GraphNet. It does not encounter problems such as cluttered background and lighting, and it uses the relative positions of the hands (landmarks) to determine the letters of the American Sign Language alphabet. A video of the result is shown below:
+As shown in the previous tables, VGG16, CNN, and PointNet achieved the best results during training. However, in real-time conditions, the best model overall is PointNet. It does not encounter problems such as cluttered background and lighting, and it uses the relative positions of the hands (landmarks) to determine the letters of the American Sign Language alphabet. A video of the result is shown below:
 
 https://github.com/user-attachments/assets/1621ec33-5f32-4646-a426-83537e3cc6ce
 
@@ -62,7 +62,7 @@ https://github.com/user-attachments/assets/1621ec33-5f32-4646-a426-83537e3cc6ce
 - [PointhNet](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link)
 
 ## Applications
-Within the repository, in the [```/application```](/application) folder, there are two applications that use the newly trained models (as GraphNet is the best, the code files are adapted to this model). The purpose of these two applications is to help people learn the American Sign Language alphabet.
+Within the repository, in the [```/application```](/application) folder, there are two applications that use the newly trained models (as PointNet is the best, the code files are adapted to this model). The purpose of these two applications is to help people learn the American Sign Language alphabet.
 
 **How to run the code:**
 1. Download the trained GraphNet model from this [link](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link).
