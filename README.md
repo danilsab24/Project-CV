@@ -34,12 +34,12 @@ To solve this task, we tried two approaches. The first approach involved trainin
 1. **First Method**
    As previously mentioned, in this case, the networks were trained on actual images. To do this, we used our dataset with preprocessing performed using the file [```landmarks_and_remove_background.py```](make_dataset/landmarks_and_remove_background.py) to reduce the problems of lighting and cluttered background. The results obtained are as follows:
 
-   | Model         | epochs | accuracy |
-   |---------------|--------|----------|
-   | CNN           |    5   |  0.992   |
-   | AlexNet       |    5   |  0.227   |
-   | SwimTransform |    5   |  0.5446  |
-   | VGG16         |    5   |  0.997   |
+   | Model           | epochs | accuracy |
+   |-----------------|--------|----------|
+   | CNN             |    5   |  0.992   |
+   | AlexNet         |    5   |  0.227   |
+   | SwinTransformer |    5   |  0.5446  |
+   | VGG16           |    5   |  0.997   |
 
    After training, the models were tested using the files [```test_model_frames.py```](test_model/test_model_frames.py) and [```video_VGG16.py```](make_dataset/test_model/camera_test_video_VGG16.py). The first file tests the model with images that are not present in the dataset for training, testing, or validation, while the second file performs a real-time test with the computer's video camera.
 
@@ -57,7 +57,7 @@ https://github.com/user-attachments/assets/1621ec33-5f32-4646-a426-83537e3cc6ce
 **Links to download the trained models:**
 - [CNN](https://drive.google.com/file/d/1gXUVVwFewbC875Cbb3Y3rfNj-7hyMKGB/view?usp=sharing)           
 - [AlexNet](https://drive.google.com/file/d/1eC-mchw7NK8jKJcivvcI-ahR83LJIWXR/view?usp=drive_link)       
-- [SwimTransform](https://drive.google.com/file/d/1GJMtqwMVJ5Pq8vZcqBzvon7QSZ_rdFHb/view?usp=drive_link) 
+- [SwinTransformer](https://drive.google.com/file/d/1GJMtqwMVJ5Pq8vZcqBzvon7QSZ_rdFHb/view?usp=drive_link) 
 - [VGG16](https://drive.google.com/file/d/1fyRrwf8oL3HBdUW2cFNIGONHkFaiuBWv/view?usp=drive_link)
 - [PointhNet](https://drive.google.com/file/d/1-7nHeSQLlZJQQDW9f9KvilB6j5G2DtkW/view?usp=drive_link)
 
